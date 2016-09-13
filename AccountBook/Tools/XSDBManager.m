@@ -42,7 +42,8 @@ static dispatch_once_t onceToken;
 - (void)createTables {
     FMDatabase *db = [self database];
     if (db) {
-        [db executeUpdate:@"create table if not exists account (id integer primary key AutoIncrement, budgetPerMonth integer, budgetToday integer, budgetPerDay integer)"];
+        [db executeUpdate:@"create table if not exists account (monthId integer primary key AutoIncrement, budgetPerMonth varchar(255), budgetToday varchar(255), budgetPerDay varchar(255))"];
+        [db executeUpdate:@"create table if not exists payrecord (payId integer primary key AutoIncremetn, dayPaidMoney vatchar(255), paidKind varchar(255))"];
         [db close];
     }
 }
